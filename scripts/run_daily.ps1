@@ -3,7 +3,7 @@
 # following scripts/daily_refresh.md — they write JSON under scripts/tmp/.
 #
 # Example (once, as Administrator):
-#   schtasks /Create /TN TechDrawdownDaily /TR "powershell -File C:\Users\pmoor\bob\tech_drawdown\scripts\run_daily.ps1" /SC DAILY /ST 09:00
+#   schtasks /Create /TN TechDrawdownDaily /TR "powershell -File C:\Users\<username>\bob\tech_drawdown\scripts\run_daily.ps1" /SC DAILY /ST 09:00
 
 $ErrorActionPreference = 'Stop'
 $Scripts = $PSScriptRoot
