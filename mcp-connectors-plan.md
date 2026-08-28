@@ -49,7 +49,7 @@ approval on every tool call.
     "mcpServers": {
       "financial-modeling-prep": {
         "command": "npx",
-        "args": ["financial-modeling-prep-mcp-server", "--fmp-token=TeUklNWwHqqbhuHHOXv5QlxI88MRb7sX"]
+        "args": ["financial-modeling-prep-mcp-server", "--fmp-token="]
       },
       "bigdata-search": {
         "command": "npx",

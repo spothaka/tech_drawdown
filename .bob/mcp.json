@@ -19,7 +19,7 @@
     "bigdata-search": {
       "url": "https://mcp.bigdata.com/",
       "headers": {
-        "x-api-key": "bd_v2_Er1HlHxxj7HjxNCMzjBTvlKDcwpILvFiVTkr5CxAjqH564"
+        "x-api-key": ""
       },
       "alwaysAllow": [
         "find_securities",
