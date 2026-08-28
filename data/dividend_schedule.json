@@ -1,0 +1,14 @@
+{
+  "_note": "ETF/fund distribution registry for the dividend income calendar (Tier 2, yield-based). A held ticker listed here is projected from its yield x market value spread over the given cadence. 'yield' overrides the universe divyield when that is absent (fraction, e.g. 0.008 = 0.8%). months = calendar months a quarterly/annual payer distributes in. Stocks are NOT listed here — they come from the FMP dividends feed (Tier 1).",
+  "JEPI": {"freq": "monthly"},
+  "JEPQ": {"freq": "monthly"},
+  "SCHD": {"freq": "quarterly", "months": [3, 6, 9, 12]},
+  "VOO":  {"freq": "quarterly", "months": [3, 6, 9, 12]},
+  "SPYM": {"freq": "quarterly", "months": [3, 6, 9, 12]},
+  "XLV":  {"freq": "quarterly", "months": [3, 6, 9, 12]},
+  "SMH":  {"freq": "quarterly", "months": [12]},
+  "MGK":  {"freq": "quarterly", "months": [3, 6, 9, 12]},
+  "SOXQ": {"freq": "annual", "months": [12], "yield": 0.006},
+  "FXAIX": {"freq": "semi", "months": [6, 12], "yield": 0.012},
+  "FBGRX": {"freq": "annual", "months": [12], "yield": 0.0}
+}

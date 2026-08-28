@@ -1,0 +1,23 @@
+digraph seq_liveprice {
+	bgcolor=white fontname=Helvetica rankdir=LR
+	graph [dpi=150 fontname=Helvetica nodesep=0.35 pad=0.3 ranksep=0.55]
+	node [color="#1F2937" fillcolor=white fontname=Helvetica fontsize=11 margin="0.14,0.08" penwidth=1.2 shape=box style="filled,rounded"]
+	edge [color="#6B7280" fontname=Helvetica fontsize=9.5 penwidth=1.1]
+	fontcolor="#1F2937" fontsize=14 label="Sequence — Live Price Fetch" labelloc=t
+	node [shape=box]
+	u [label="User / auto-open" color="#1F2937" fillcolor="#F3F4F6"]
+	panel [label="Portfolio panel" color="#2E75B6" fillcolor="#EAF2FB"]
+	lp [label="livePrice()" color="#2E75B6" fillcolor="#EAF2FB"]
+	ca [label="localStorage LP:" color="#6B7280" fillcolor="#F3F4F6" shape=cylinder]
+	rt [label="resolveTyped()" color="#2E75B6" fillcolor="#EAF2FB"]
+	bd [label="Bigdata MCP" color="#C0392B" fillcolor="#FDECEA"]
+	u -> panel [label="1 trigger"]
+	panel -> lp [label="2 per holding"]
+	lp -> ca [label="3 check TTL" dir=both]
+	lp -> rt [label="4 on miss"]
+	rt -> bd [label="5 find_securities"]
+	bd -> rt [label="6 id + type" style=dashed]
+	rt -> bd [label="7 tearsheet"]
+	bd -> lp [label="8 price/high/MAs" style=dashed]
+	lp -> panel [label="9 LIVEPX → recompute" style=dashed]
+}

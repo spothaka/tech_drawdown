@@ -1,0 +1,5 @@
+{
+  "_format": "ticker -> {ratio, date (YYYY-MM-DD, effective), type: 'split' | 'reverse'}",
+  "AVGO": {"ratio": "10:1", "date": "2026-06-15", "type": "split"},
+  "SHEL": {"ratio": "1:20", "date": "2026-05-02", "type": "reverse"}
+}

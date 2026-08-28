@@ -1,0 +1,21 @@
+{
+  "name": "Company Fundamentals (baseline)",
+  "version": "1.0",
+  "appliesTo": "company",
+  "description": "Baseline ruleset that reproduces the original fundScoreNorm() exactly. Composite = mean of the available factor scores (+1 good / 0 neutral / -1 poor).",
+  "aggregate": "meanOfAvailable",
+  "factors": [
+    { "id": "pe",  "group": "valuation", "metric": "price_to_earnings_ratio_ttm", "type": "low",  "good": 15,   "bad": 30,   "gate": "positiveEarnings", "label": "P/E" },
+    { "id": "ps",  "group": "valuation", "metric": "price_to_sales_ratio_ttm",    "type": "low",  "good": 2,    "bad": 6,    "label": "P/S" },
+    { "id": "pb",  "group": "valuation", "metric": "price_to_book_ratio_ttm",     "type": "low",  "good": 3,    "bad": 8,    "label": "P/B" },
+    { "id": "ev",  "group": "valuation", "metric": "ev_to_ebitda_ttm",            "type": "low",  "good": 12,   "bad": 22,   "label": "EV/EBITDA" },
+    { "id": "fcf", "group": "valuation", "metric": "free_cash_flow_yield_ttm",    "type": "high", "good": 0.05, "bad": 0.02, "label": "FCF yield" },
+    { "id": "div", "group": "income",    "metric": "dividend_yield_ttm",          "type": "boolAbove", "threshold": 0.03, "label": "Dividend > 3%" },
+    { "id": "roe", "group": "quality",   "metric": "return_on_equity_ttm",        "type": "high", "good": 0.20, "bad": 0.10, "label": "ROE" },
+    { "id": "roa", "group": "quality",   "metric": "return_on_assets_ttm",        "type": "high", "good": 0.10, "bad": 0.05, "label": "ROA" },
+    { "id": "gm",  "group": "quality",   "metric": "gross_profit_margin_ttm",     "type": "high", "good": 0.50, "bad": 0.30, "label": "Gross margin" },
+    { "id": "nm",  "group": "quality",   "metric": "net_profit_margin_ttm",       "type": "high", "good": 0.15, "bad": 0.05, "label": "Net margin" },
+    { "id": "de",  "group": "health",    "metric": "debt_to_equity_ratio_ttm",    "type": "low",  "good": 0.5,  "bad": 1.5,  "label": "Debt/Equity" },
+    { "id": "cr",  "group": "health",    "metric": "current_ratio_ttm",           "type": "high", "good": 1.5,  "bad": 1.0,  "label": "Current ratio" }
+  ]
+}

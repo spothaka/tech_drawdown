@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "financial-modeling-prep": {
+      "url": "http://localhost:8080/mcp",
+      "alwaysAllow": [
+        "quote",
+        "batch-quote",
+        "analyst",
+        "statements",
+        "discountedCashFlow",
+        "dividends-company",
+        "historical-price-eod-light",
+        "chart",
+        "commodity",
+        "forex",
+        "economics"
+      ]
+    },
+    "bigdata-search": {
+      "url": "https://mcp.bigdata.com/",
+      "headers": {
+        "x-api-key": "bd_v2_Er1HlHxxj7HjxNCMzjBTvlKDcwpILvFiVTkr5CxAjqH564"
+      },
+      "alwaysAllow": [
+        "find_securities",
+        "bigdata_company_tearsheet",
+        "bigdata_etf_tearsheet",
+        "bigdata_sentiment_tearsheet"
+      ]
+    }
+  }
+}

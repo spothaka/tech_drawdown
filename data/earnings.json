@@ -1,0 +1,429 @@
+{
+"GS": {
+"symbol": "GS",
+"reportDate": "2026-07-14",
+"fiscalYear": 2026,
+"fiscalPeriod": "Q2",
+"currency": "USD",
+"eps": {
+"actual": 20.98,
+"est": 14.47,
+"surprisePct": 44.99
+},
+"revenue": {
+"actual": 20338000000.0,
+"est": 16224980000.0,
+"surprisePct": 25.35
+},
+"netIncome": 6628000000.0,
+"taxRate": 22.6,
+"dilutedSharesYoYPct": -4.2,
+"epsTrend": [
+{
+"label": "24 Q3",
+"eps": 8.4
+},
+{
+"label": "24 Q4",
+"eps": 11.95
+},
+{
+"label": "25 Q1",
+"eps": 14.12
+},
+{
+"label": "25 Q2",
+"eps": 10.95
+},
+{
+"label": "25 Q3",
+"eps": 12.25
+},
+{
+"label": "25 Q4",
+"eps": 14.0
+},
+{
+"label": "26 Q1",
+"eps": 17.55
+},
+{
+"label": "26 Q2",
+"eps": 20.98
+}
+],
+"fwd": {
+"nextPeriod": "Q3 2026",
+"nextEpsEst": 15.31,
+"view": "normalizing"
+},
+"rating": {
+"consensus": "Hold",
+"buy": 22,
+"hold": 29,
+"sell": 4,
+"targetConsensus": 1142.67
+},
+"memoPath": "reports/earnings/GS_2026_Q2.md",
+"asOf": "2026-07-15",
+"epsYoYPct": 91.6,
+"drivers": [
+"EPS beat consensus by +45% and revenue by +25%.",
+"Diluted EPS +92% year-on-year.",
+"Buybacks cut the diluted share count -4.2% year-on-year."
+],
+"watch": [
+"Consensus models Q3 2026 EPS back to $15.31 \u2014 the Street treats this quarter as a spike, not a new baseline.",
+"Analyst consensus: Hold \u00b7 target $1,143."
+]
+},
+"ASML": {
+"symbol": "ASML",
+"reportDate": "2026-07-15",
+"fiscalYear": 2026,
+"fiscalPeriod": "Q2",
+"currency": "USD",
+"eps": {
+"actual": 8.68,
+"est": 7.98,
+"surprisePct": 8.77
+},
+"revenue": {
+"actual": 10665680000.0,
+"est": 10239880000.0,
+"surprisePct": 4.16
+},
+"netIncome": null,
+"taxRate": null,
+"dilutedSharesYoYPct": null,
+"epsTrend": [],
+"fwd": {
+"nextPeriod": "Q3 2026",
+"nextEpsEst": 10.26,
+"view": "step-up"
+},
+"rating": {
+"consensus": "Buy",
+"buy": 25,
+"hold": 16,
+"sell": 3,
+"targetConsensus": 2305.75
+},
+"memoPath": "reports/earnings/ASML_2026_Q2.md",
+"asOf": "2026-07-17",
+"drivers": [
+"EPS beat consensus by +9% and revenue by +4%."
+],
+"watch": [
+"Consensus keeps Q3 2026 EPS elevated at $10.26 \u2014 the Street sees the run-rate holding.",
+"Analyst consensus: Buy \u00b7 target $2,306."
+]
+},
+"UNH": {
+"symbol": "UNH",
+"reportDate": "2026-07-16",
+"fiscalYear": 2026,
+"fiscalPeriod": "Q1",
+"currency": "USD",
+"eps": {
+"actual": 6.38,
+"est": 4.87,
+"surprisePct": 31.01
+},
+"revenue": {
+"actual": 112032000000.0,
+"est": 110806600000.0,
+"surprisePct": 1.11
+},
+"netIncome": 6280000000.0,
+"taxRate": 18.6,
+"dilutedSharesYoYPct": -0.9,
+"epsTrend": [
+{
+"label": "24 Q2",
+"eps": 4.54
+},
+{
+"label": "24 Q3",
+"eps": 6.51
+},
+{
+"label": "24 Q4",
+"eps": 5.98
+},
+{
+"label": "25 Q1",
+"eps": 6.85
+},
+{
+"label": "25 Q2",
+"eps": 3.74
+},
+{
+"label": "25 Q3",
+"eps": 2.59
+},
+{
+"label": "25 Q4",
+"eps": 0.01
+},
+{
+"label": "26 Q1",
+"eps": 6.9
+}
+],
+"fwd": {
+"nextPeriod": null,
+"nextEpsEst": null,
+"view": null
+},
+"rating": {
+"consensus": "Buy",
+"buy": 43,
+"hold": 7,
+"sell": 2,
+"targetConsensus": 451.12
+},
+"memoPath": "reports/earnings/UNH_2026_Q1.md",
+"asOf": "2026-07-17",
+"epsYoYPct": 0.7,
+"drivers": [
+"EPS beat consensus by +31% and revenue by +1%.",
+"Diluted EPS +1% year-on-year.",
+"Buybacks cut the diluted share count -0.9% year-on-year."
+],
+"watch": [
+"Analyst consensus: Buy \u00b7 target $451."
+]
+},
+"JNJ": {
+"symbol": "JNJ",
+"reportDate": "2026-07-15",
+"fiscalYear": 2026,
+"fiscalPeriod": "Q2",
+"currency": "USD",
+"eps": {
+"actual": 2.9,
+"est": 2.84,
+"surprisePct": 2.11
+},
+"revenue": {
+"actual": 25310000000.0,
+"est": 25062320000.0,
+"surprisePct": 0.99
+},
+"netIncome": 5534000000.0,
+"taxRate": 18.0,
+"dilutedSharesYoYPct": 0.9,
+"epsTrend": [
+{
+"label": "24 Q3",
+"eps": 1.11
+},
+{
+"label": "24 Q4",
+"eps": 1.41
+},
+{
+"label": "25 Q1",
+"eps": 4.54
+},
+{
+"label": "25 Q2",
+"eps": 2.29
+},
+{
+"label": "25 Q3",
+"eps": 2.12
+},
+{
+"label": "25 Q4",
+"eps": 2.1
+},
+{
+"label": "26 Q1",
+"eps": 2.14
+},
+{
+"label": "26 Q2",
+"eps": 2.27
+}
+],
+"fwd": {
+"nextPeriod": "Q3 2026",
+"nextEpsEst": 3.05,
+"view": "in-line"
+},
+"rating": {
+"consensus": "Buy",
+"buy": 21,
+"hold": 16,
+"sell": 3,
+"targetConsensus": 272.69
+},
+"memoPath": "reports/earnings/JNJ_2026_Q2.md",
+"asOf": "2026-07-17",
+"epsYoYPct": -0.9,
+"drivers": [
+"EPS beat consensus by +2% and revenue by +1%.",
+"Diluted EPS -1% year-on-year."
+],
+"watch": [
+"Analyst consensus: Buy \u00b7 target $273."
+]
+},
+"JPM": {
+"symbol": "JPM",
+"reportDate": "2026-07-14",
+"fiscalYear": 2026,
+"fiscalPeriod": "Q2",
+"currency": "USD",
+"eps": {
+"actual": 7.59,
+"est": 5.59,
+"surprisePct": 35.78
+},
+"revenue": {
+"actual": 57347000000.0,
+"est": 50720640000.0,
+"surprisePct": 13.06
+},
+"netIncome": 21155000000.0,
+"taxRate": 23.1,
+"dilutedSharesYoYPct": 0.2,
+"epsTrend": [
+{
+"label": "24 Q3",
+"eps": 4.37
+},
+{
+"label": "24 Q4",
+"eps": 4.81
+},
+{
+"label": "25 Q1",
+"eps": 5.07
+},
+{
+"label": "25 Q2",
+"eps": 5.24
+},
+{
+"label": "25 Q3",
+"eps": 5.07
+},
+{
+"label": "25 Q4",
+"eps": 4.63
+},
+{
+"label": "26 Q1",
+"eps": 5.94
+},
+{
+"label": "26 Q2",
+"eps": 7.57
+}
+],
+"fwd": {
+"nextPeriod": "Q3 2026",
+"nextEpsEst": 5.7,
+"view": "normalizing"
+},
+"rating": {
+"consensus": "Buy",
+"buy": 31,
+"hold": 27,
+"sell": 2,
+"targetConsensus": 365.73
+},
+"memoPath": "reports/earnings/JPM_2026_Q2.md",
+"asOf": "2026-07-17",
+"epsYoYPct": 44.5,
+"drivers": [
+"EPS beat consensus by +36% and revenue by +13%.",
+"Diluted EPS +44% year-on-year."
+],
+"watch": [
+"Consensus models Q3 2026 EPS back to $5.70 \u2014 the Street treats this quarter as a spike, not a new baseline.",
+"Analyst consensus: Buy \u00b7 target $366."
+]
+},
+"NFLX": {
+"symbol": "NFLX",
+"reportDate": "2026-07-16",
+"fiscalYear": 2026,
+"fiscalPeriod": "Q2",
+"currency": "USD",
+"eps": {
+"actual": 0.8,
+"est": 0.79,
+"surprisePct": 1.27
+},
+"revenue": {
+"actual": 12560000000.0,
+"est": 12581160000.0,
+"surprisePct": -0.17
+},
+"netIncome": 3401414000.0,
+"taxRate": 16.4,
+"dilutedSharesYoYPct": -2.0,
+"epsTrend": [
+{
+"label": "24 Q3",
+"eps": 0.54
+},
+{
+"label": "24 Q4",
+"eps": 0.43
+},
+{
+"label": "25 Q1",
+"eps": 0.66
+},
+{
+"label": "25 Q2",
+"eps": 0.72
+},
+{
+"label": "25 Q3",
+"eps": 0.59
+},
+{
+"label": "25 Q4",
+"eps": 0.56
+},
+{
+"label": "26 Q1",
+"eps": 1.23
+},
+{
+"label": "26 Q2",
+"eps": 0.8
+}
+],
+"fwd": {
+"nextPeriod": "Q3 2026",
+"nextEpsEst": 0.83,
+"view": "in-line"
+},
+"rating": {
+"consensus": "Buy",
+"buy": 65,
+"hold": 27,
+"sell": 7,
+"targetConsensus": 106.05
+},
+"memoPath": "reports/earnings/NFLX_2026_Q2.md",
+"asOf": "2026-07-17",
+"epsYoYPct": 11.1,
+"drivers": [
+"EPS beat consensus by +1% and revenue by -0%.",
+"Diluted EPS +11% year-on-year.",
+"Buybacks cut the diluted share count -2.0% year-on-year."
+],
+"watch": [
+"Analyst consensus: Buy \u00b7 target $106."
+]
+}
+}

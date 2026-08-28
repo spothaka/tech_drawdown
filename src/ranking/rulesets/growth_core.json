@@ -1,0 +1,24 @@
+{
+  "name": "Growth-core shortlist (baseline)",
+  "version": "1.0",
+  "appliesTo": "company-group",
+  "mode": "group",
+  "description": "Quality + Valuation + Trend + Analyst, each a percentile blend within the growth-core shortlist (lower-is-better metrics inverted). Quality-tilted default weights (2/1/1/1 ~ 40/20/20/20).",
+  "aggregate": "meanOfAvailableDimensions",
+  "factors": [
+    { "id": "roe",    "metric": "roe",    "norm": "percentile", "invert": false, "label": "ROE" },
+    { "id": "roa",    "metric": "roa",    "norm": "percentile", "invert": false, "label": "ROA" },
+    { "id": "gm",     "metric": "gm",     "norm": "percentile", "invert": false, "label": "Gross margin" },
+    { "id": "nm",     "metric": "nm",     "norm": "percentile", "invert": false, "label": "Net margin" },
+    { "id": "pe",     "metric": "pe",     "norm": "percentile", "invert": true,  "label": "P/E" },
+    { "id": "ev",     "metric": "ev",     "norm": "percentile", "invert": true,  "label": "EV/EBITDA" },
+    { "id": "trend",  "metric": "trend",  "norm": "percentile", "invert": false, "label": "SMA trend" },
+    { "id": "upside", "metric": "upside", "norm": "percentile", "invert": false, "label": "Analyst upside" }
+  ],
+  "dimensions": [
+    { "id": "quality",   "factors": ["roe", "roa", "gm", "nm"], "label": "Quality",   "weight": 2 },
+    { "id": "valuation", "factors": ["pe", "ev"],               "label": "Valuation", "weight": 1 },
+    { "id": "trend",     "factors": ["trend"],                  "label": "Trend",     "weight": 1 },
+    { "id": "analyst",   "factors": ["upside"],                 "label": "Analyst",   "weight": 1 }
+  ]
+}

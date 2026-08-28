@@ -1,0 +1,92 @@
+digraph arch_system {
+	bgcolor=white fontname=Helvetica rankdir=TB
+	graph [dpi=150 fontname=Helvetica nodesep=0.35 pad=0.3 ranksep=0.55]
+	node [color="#1F2937" fillcolor=white fontname=Helvetica fontsize=11 margin="0.14,0.08" penwidth=1.2 shape=box style="filled,rounded"]
+	edge [color="#6B7280" fontname=Helvetica fontsize=9.5 penwidth=1.1]
+	fontcolor="#1F2937" fontsize=16 label="Tech Drawdown — System Architecture" labelloc=t
+	subgraph cluster_src {
+		color="#E0A106" fillcolor="#FFF7E6" fontcolor="#B07D04" fontsize=12 label="1 · Data Sources (local, private)" style="filled,rounded"
+		uwb [label="Universe Workbook
+tech100_drawdown_SP_NAS.xlsx
+membership + static cols + STOCKHISTORY fallback" color="#E0A106" fillcolor=white]
+		ira_src [label="IRA.xlsx
+(holdings export)" color="#E0A106" fillcolor=white]
+		bk_src [label="Brokerage.xlsx
+(holdings export)" color="#E0A106" fillcolor=white]
+		pwb [label="IRA_Portfolio.xlsx /
+Brokerage_Portfolio.xlsx
+(live-formula workbooks)" color="#E0A106" fillcolor=white fontcolor="#6B7280"]
+	}
+	subgraph cluster_pipe {
+		color="#2E75B6" fillcolor="#EAF2FB" fontcolor="#2E75B6" fontsize=12 label="2 · Build & Publish Pipeline (Python)" style="filled,rounded"
+		build [label="build_market_data.py
+FMP -> STOCKHISTORY tail -> carry-forward" color="#2E75B6" fillcolor=white]
+		guard [label="integrity_guard.py
+52-wk band / ratio · dq flag" color="#2E75B6" fillcolor=white]
+		mdx [label="market_data.xlsx
+(FMP-written live data)" color="#2E75B6" fillcolor=white shape=cylinder]
+		json [label="DATA · 19 keys
+universe + holdings + coreRank + splits +
+indexHistory + macroHistory + history + alerts +
+dividends + dcf + lookthrough + earnings + dcfMonitor" color="#2E75B6" fillcolor=white shape=cylinder]
+		tpl [label="dashboard_tpl.html
+const DATA = __DATA__" color="#2E75B6" fillcolor=white]
+		dep [label="tech_drawdown_dashboard.html
+(deployed, DATA injected)" color="#2E75B6" fillcolor=white]
+	}
+	subgraph cluster_rt {
+		color="#6B7280" fillcolor="#F3F4F6" fontcolor="#1F2937" fontsize=12 label="3 · Dashboard Runtime (browser)" style="filled,rounded"
+		art [label="Deployed HTML
+tech_drawdown_dashboard.html" color="#1F2937" fillcolor=white]
+		tabs [label="9 tabs: universe (6) +
+IRA / Brokerage / Retirement" color="#6B7280" fillcolor=white]
+		popup [label="Fundamentals popup
+risk · advisor scorecard" color="#6B7280" fillcolor=white]
+		cache [label="localStorage cache
+tdd_pcache_v5 (TTL-tiered)" color="#6B7280" fillcolor=white shape=cylinder]
+		rank [label="Rules ranking engine
+sector · fund · growth-core
+(weights · thresholds · IF/THEN)" color="#6B7280" fillcolor=white]
+		bdx [label="BDX provider adapter
+connector I/O + shape mapping" color="#6B7280" fillcolor=white]
+	}
+	subgraph cluster_conn {
+		color="#C0392B" fillcolor="#FDECEA" fontcolor="#C0392B" fontsize=12 label="4a · Live Data Connectors" style="filled,rounded"
+		fmp [label="FMP MCP
+batch-quote · universe live data" color="#C0392B" fillcolor=white]
+		bd [label="Bigdata MCP
+find_securities · tearsheets
+(holdings · off-index · fundamentals)" color="#C0392B" fillcolor=white]
+	}
+	subgraph cluster_auto {
+		color="#2E7D32" fillcolor="#E8F5E9" fontcolor="#2E7D32" fontsize=12 label="4b · Automation" style="filled,rounded"
+		cron [label="Local daily refresh · 9am
+fetch FMP -> build -> guard -> import ->
+reprice -> regenerate -> write HTML" color="#2E7D32" fillcolor=white]
+	}
+	fmp -> build [label="live universe" color="#C0392B"]
+	uwb -> build [label="membership + static + fallback"]
+	ira_src -> build
+	bk_src -> build
+	ira_src -> pwb [label="Excel build" color="#6B7280" style=dashed]
+	bk_src -> pwb [color="#6B7280" style=dashed]
+	build -> mdx
+	build -> guard
+	guard -> json
+	json -> dep
+	tpl -> dep [label=inject]
+	dep -> art [label="open locally"]
+	art -> tabs
+	art -> popup
+	tabs -> cache [dir=both style=dashed]
+	tabs -> bdx [label="live prices"]
+	popup -> bdx [label=fundamentals]
+	popup -> rank [label=rankings style=dashed]
+	bdx -> bd [label="holdings connector calls" color="#C0392B"]
+	cron -> fmp [label="fetch universe" color="#2E7D32"]
+	cron -> uwb [label="static+fallback" color="#2E7D32" style=dashed]
+	cron -> ira_src [color="#2E7D32" style=dashed]
+	cron -> bd [label="off-index reprice" color="#2E7D32"]
+	cron -> dep [label=regenerate color="#2E7D32"]
+	cron -> art [label="write HTML" color="#2E7D32"]
+}

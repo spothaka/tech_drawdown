@@ -1,0 +1,27 @@
+digraph wf_holdings {
+	bgcolor=white fontname=Helvetica rankdir=LR
+	graph [dpi=150 fontname=Helvetica nodesep=0.35 pad=0.3 ranksep=0.55]
+	node [color="#1F2937" fillcolor=white fontname=Helvetica fontsize=11 margin="0.14,0.08" penwidth=1.2 shape=box style="filled,rounded"]
+	edge [color="#6B7280" fontname=Helvetica fontsize=9.5 penwidth=1.1]
+	fontcolor="#1F2937" fontsize=14 label="Holdings-Update Workflow (hands-off after edit)" labelloc=t
+	h1 [label="You edit a row in
+IRA.xlsx / Brokerage.xlsx" color="#E0A106" fillcolor="#FFF7E6" shape=note]
+	h2 [label="OneDrive syncs
+(hydrated on device)" color="#6B7280" fillcolor="#F3F4F6"]
+	h3 [label="Next 9am task:
+re-import holdings" color="#2E7D32" fillcolor="#E8F5E9"]
+	h4 [label="New off-index name?
+auto-detected" color="#E0A106" fillcolor="#FFF7E6" shape=diamond]
+	h5 [label="Reprice via connector" color="#C0392B" fillcolor="#FDECEA"]
+	h6 [label="In-universe → prices
+from universe tab" color="#2E75B6" fillcolor="#EAF2FB"]
+	h7 [label="Regenerate + write HTML →
+appears in dashboard" color="#1F2937" fillcolor="#F3F4F6" shape=oval]
+	h1 -> h2
+	h2 -> h3
+	h3 -> h4
+	h4 -> h5 [label=yes]
+	h4 -> h6 [label=no]
+	h5 -> h7
+	h6 -> h7
+}

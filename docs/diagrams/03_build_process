@@ -1,0 +1,47 @@
+digraph build_process {
+	bgcolor=white fontname=Helvetica rankdir=TB
+	graph [dpi=150 fontname=Helvetica nodesep=0.35 pad=0.3 ranksep=0.55]
+	node [color="#1F2937" fillcolor=white fontname=Helvetica fontsize=11 margin="0.14,0.08" penwidth=1.2 shape=box style="filled,rounded"]
+	edge [color="#6B7280" fontname=Helvetica fontsize=9.5 penwidth=1.1]
+	fontcolor="#1F2937" fontsize=15 label="Build & Publish Process" labelloc=t
+	a0 [label="Fetch FMP batch-quote
+(universe, <=450/chunk; [] on fail)" color="#C0392B" fillcolor="#FDECEA"]
+	a1 [label="build_market_data.py:
+FMP -> STOCKHISTORY tail -> carry-forward" color="#2E75B6" fillcolor="#EAF2FB"]
+	a2 [label="integrity_guard:
+52-wk band / ratio · suppress + dq" color="#E0A106" fillcolor="#FFF7E6" shape=diamond]
+	a3 [label="Preserve / import
+ira · brokerage · coreRank · splits" color="#2E75B6" fillcolor="#EAF2FB"]
+	ahist [label="build_index_history.py + build_macro_history.py
+index + macro/commodities 1-yr weekly ·
+preserve + carry-forward on gate/fail" color="#2E75B6" fillcolor="#EAF2FB"]
+	aderiv [label="7 pure transforms (no connector calls, preserve-on-fail)
+build_history.py -> benchmark/timeline · build_alerts.py -> alerts (dq-guarded)
+build_dividends.py -> 12-mo calendar · build_dcf.py -> valuation bases
+build_lookthrough.py -> fund look-through
+build_earnings.py -> earnings memos · dcf_monitor.js -> valuation drift" color="#2E75B6" fillcolor="#EAF2FB"]
+	a4 [label="Assemble DATA (19 keys)
++ write market_data.xlsx" color="#2E75B6" fillcolor="#EAF2FB" shape=cylinder]
+	aM [label="assemble_dashboard.py
+(src/dash 27 modules -> template ·
+byte-for-byte golden-master)" color="#2E75B6" fillcolor="#EAF2FB"]
+	a5 [label="Inject into template
+(replace __DATA__)" color="#2E75B6" fillcolor="#EAF2FB"]
+	a6 [label="Validate:
+node parse · </html> ·
+two </script>" color="#E0A106" fillcolor="#FFF7E6" shape=diamond]
+	a7 [label="Write deployed HTML" color="#2E75B6" fillcolor="#EAF2FB"]
+	a8 [label="Write both HTML copies" color="#1F2937" fillcolor="#F3F4F6"]
+	a0 -> a1
+	a1 -> a2
+	a2 -> a3
+	a3 -> ahist
+	ahist -> aderiv
+	aderiv -> a4
+	a4 -> aM
+	aM -> a5
+	a5 -> a6
+	a6 -> a7 [label=pass]
+	a6 -> a1 [label="fail -> fix" color="#C0392B" style=dashed]
+	a7 -> a8
+}

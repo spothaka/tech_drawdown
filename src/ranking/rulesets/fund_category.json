@@ -1,0 +1,25 @@
+{
+  "name": "Fund / Category Ranking (baseline)",
+  "version": "1.0",
+  "appliesTo": "fund-group",
+  "mode": "group",
+  "description": "Equal-weight of Overview, Holdings, Returns, Risk, and SMA-trend dimensions; each a percentile blend within the category (lower-is-better metrics inverted). Mutual funds (no ETF metrics) fall back to trend-only automatically. Reproduces openCategoryRanking().",
+  "aggregate": "meanOfAvailableDimensions",
+  "factors": [
+    { "id": "trend",    "metric": "trend",    "norm": "percentile", "invert": false, "label": "SMA trend" },
+    { "id": "expense",  "metric": "expense",  "norm": "percentile", "invert": true,  "label": "Expense ratio" },
+    { "id": "premdisc", "metric": "premdisc", "norm": "percentile", "invert": true,  "label": "Premium/Discount" },
+    { "id": "top10",    "metric": "top10",    "norm": "percentile", "invert": true,  "label": "Top-10 weight" },
+    { "id": "ret1y",    "metric": "ret1y",    "norm": "percentile", "invert": false, "label": "1Y return" },
+    { "id": "ret3m",    "metric": "ret3m",    "norm": "percentile", "invert": false, "label": "3M return" },
+    { "id": "maxdd",    "metric": "maxdd",    "norm": "percentile", "invert": false, "label": "Max drawdown" },
+    { "id": "vol60",    "metric": "vol60",    "norm": "percentile", "invert": true,  "label": "Volatility 60D" }
+  ],
+  "dimensions": [
+    { "id": "overview", "factors": ["expense", "premdisc"], "label": "Overview" },
+    { "id": "holdings", "factors": ["top10"],               "label": "Holdings" },
+    { "id": "returns",  "factors": ["ret1y", "ret3m"],      "label": "Returns" },
+    { "id": "risk",     "factors": ["maxdd", "vol60"],      "label": "Risk" },
+    { "id": "trend",    "factors": ["trend"],               "label": "SMA trend" }
+  ]
+}

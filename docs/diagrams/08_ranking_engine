@@ -1,0 +1,43 @@
+digraph ranking_engine {
+	bgcolor=white fontname=Helvetica rankdir=TB
+	graph [dpi=150 fontname=Helvetica nodesep=0.35 pad=0.3 ranksep=0.55]
+	node [color="#1F2937" fillcolor=white fontname=Helvetica fontsize=11 margin="0.14,0.08" penwidth=1.2 shape=box style="filled,rounded"]
+	edge [color="#6B7280" fontname=Helvetica fontsize=9.5 penwidth=1.1]
+	fontcolor="#1F2937" fontsize=15 label="Rules-Based Ranking Engine (V2)" labelloc=t
+	subgraph cluster_src2 {
+		color="#E0A106" fillcolor="#FFF7E6" fontcolor="#B07D04" fontsize=12 label="Source of truth · src/ranking" style="filled,rounded"
+		eng [label="engine.js
+scoreItem · rankGroup ·
+conditions · validateRuleset" color="#E0A106" fillcolor=white]
+		store [label="store.js
+active · presets · export/import" color="#E0A106" fillcolor=white]
+		rs [label="rulesets/*.json
+company_fundamentals · sector_company
+fund_category · growth_core" color="#E0A106" fillcolor=white shape=note]
+	}
+	subgraph cluster_inj {
+		color="#2E75B6" fillcolor="#EAF2FB" fontcolor="#2E75B6" fontsize=12 label="Injection (single source)" style="filled,rounded"
+		sync [label="sync_engine.js
+-> inline block in template" color="#2E75B6" fillcolor=white]
+	}
+	subgraph cluster_use {
+		color="#6B7280" fillcolor="#F3F4F6" fontcolor="#1F2937" fontsize=12 label="In the artifact" style="filled,rounded"
+		r3 [label="3 rankings
+sector · fund · growth-core" color="#1F2937" fillcolor=white]
+		ed [label="Editor UI
+weight sliders · thresholds ·
+conditions builder" color="#6B7280" fillcolor=white]
+		xp [label="Explain-per-row
+score breakdown + fired rules" color="#6B7280" fillcolor=white]
+	}
+	day [label="Daily task
+recompute_core.js -> coreRank" color="#2E7D32" fillcolor="#E8F5E9"]
+	eng -> sync
+	store -> sync
+	rs -> sync
+	sync -> r3 [label=inlined]
+	ed -> r3 [label="live re-rank" dir=both]
+	r3 -> xp
+	rs -> day [label=growth_core color="#2E7D32" style=dashed]
+	eng -> day [color="#2E7D32" style=dashed]
+}

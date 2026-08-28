@@ -1,0 +1,16 @@
+{
+  "name": "Sector Company Ranking (baseline)",
+  "version": "1.0",
+  "appliesTo": "company-group",
+  "mode": "group",
+  "description": "50% percentile of SMA-trend + 50% percentile of fundamental score, within the sector. Reproduces openSectorRanking().",
+  "aggregate": "meanOfAvailableDimensions",
+  "factors": [
+    { "id": "trend", "metric": "trend",     "norm": "percentile", "invert": false, "label": "SMA trend" },
+    { "id": "fund",  "metric": "fundScore", "norm": "percentile", "invert": false, "label": "Fundamentals" }
+  ],
+  "dimensions": [
+    { "id": "trend",        "factors": ["trend"], "label": "SMA trend" },
+    { "id": "fundamentals", "factors": ["fund"],  "label": "Fundamentals" }
+  ]
+}

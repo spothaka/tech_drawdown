@@ -1,0 +1,37 @@
+digraph dataflow {
+	bgcolor=white fontname=Helvetica rankdir=LR
+	graph [dpi=150 fontname=Helvetica nodesep=0.35 pad=0.3 ranksep=0.55]
+	node [color="#1F2937" fillcolor=white fontname=Helvetica fontsize=11 margin="0.14,0.08" penwidth=1.2 shape=box style="filled,rounded"]
+	edge [color="#6B7280" fontname=Helvetica fontsize=9.5 penwidth=1.1]
+	fontcolor="#1F2937" fontsize=15 label="Data-Flow Diagram" labelloc=t
+	fmp [label="FMP connector
+batch-quote: price/high/low/50-200 SMA" color="#C0392B" fillcolor="#FDECEA" shape=component]
+	s1 [label="Universe workbook
+membership + static + STOCKHISTORY fallback" color="#E0A106" fillcolor="#FFF7E6" shape=folder]
+	s2 [label="IRA.xlsx /
+Brokerage.xlsx" color="#E0A106" fillcolor="#FFF7E6" shape=folder]
+	p1 [label="build_market_data.py
+provider chain + integrity guard" color="#2E75B6" fillcolor="#EAF2FB"]
+	mdx [label="market_data.xlsx
+(machine-written)" color="#2E75B6" fillcolor="#EAF2FB" shape=cylinder]
+	j [label="DATA · 19 keys
+universe(6) + ira·brokerage·coreRank·splits·
+indexHistory·macroHistory·history·alerts·dividends·
+dcf·lookthrough·earnings·dcfMonitor" color="#2E75B6" fillcolor="#EAF2FB" shape=cylinder]
+	t [label="dashboard_tpl.html" color="#2E75B6" fillcolor="#EAF2FB"]
+	d [label="deployed HTML
+(DATA embedded)" color="#2E75B6" fillcolor="#EAF2FB"]
+	a [label="Deployed HTML" color="#1F2937" fillcolor="#F3F4F6"]
+	c [label="Bigdata connector" color="#C0392B" fillcolor="#FDECEA"]
+	fmp -> p1 [label="universe live" color="#C0392B" style=bold]
+	s1 -> p1 [label="membership/static + fallback"]
+	s2 -> p1 [label=holdings]
+	p1 -> mdx
+	p1 -> j
+	j -> d [label="inject into"]
+	t -> d
+	d -> a [label="write files"]
+	c -> a [label="live prices &
+fundamentals
+(runtime)" color="#C0392B" style=bold]
+}

@@ -1,0 +1,72 @@
+digraph wf_scheduled {
+	bgcolor=white fontname=Helvetica rankdir=TB
+	graph [dpi=150 fontname=Helvetica nodesep=0.35 pad=0.3 ranksep=0.55]
+	node [color="#1F2937" fillcolor=white fontname=Helvetica fontsize=11 margin="0.14,0.08" penwidth=1.2 shape=box style="filled,rounded"]
+	edge [color="#6B7280" fontname=Helvetica fontsize=9.5 penwidth=1.1]
+	fontcolor="#1F2937" fontsize=15 label="Daily Scheduled Refresh — Workflow" labelloc=t
+	start [label="Trigger 9am" color="#2E7D32" fillcolor="#E8F5E9" shape=oval]
+	g0 [label="Main workbook
+intact? (zip·EOCD·6 sheets)" color="#E0A106" fillcolor="#FFF7E6" shape=diamond]
+	abort [label="ABORT — keep last good
+report failed check" color="#C0392B" fillcolor="#FDECEA" shape=box]
+	read [label="Fetch FMP + build universe
+(chain; STOCKHISTORY fallback if FMP down)" color="#2E75B6" fillcolor="#EAF2FB"]
+	guard [label="Integrity guard
+suppress corrupt/#N/A · dq flag" color="#E0A106" fillcolor="#FFF7E6"]
+	keep [label="Load existing DATA
+(fallback for ira/brokerage/coreRank)" color="#2E75B6" fillcolor="#EAF2FB"]
+	g1 [label="IRA.xlsx / Brokerage.xlsx
+readable? (gate)" color="#E0A106" fillcolor="#FFF7E6" shape=diamond]
+	imp [label="RE-IMPORT holdings
+(carry prior live fields)" color="#2E75B6" fillcolor="#EAF2FB"]
+	skip [label="SKIP → preserve prior
+⚠ flag in report" color="#B07D04" fillcolor="#FFF3CD"]
+	off [label="Derive off-index set
+(marketable ∉ universe)" color="#2E75B6" fillcolor="#EAF2FB"]
+	reprice [label="Reprice off-index via connector
+(resolve → tearsheet → recompute)" color="#C0392B" fillcolor="#FDECEA"]
+	g2 [label="fetch ok?" color="#E0A106" fillcolor="#FFF7E6" shape=diamond]
+	keepold [label="Keep prior/last-known price
+(never blank)" color="#B07D04" fillcolor="#FFF3CD"]
+	rcore [label="Recompute growth-core
+(recompute_core.js;
+preserve prior on fail)" color="#2E75B6" fillcolor="#EAF2FB"]
+	hist [label="Refresh index + macro history
+(FMP chart/commodity/forex/economics;
+preserve prior · carry-forward on gate/fail)" color="#2E75B6" fillcolor="#EAF2FB"]
+	deriv [label="Derived feeds (pure transforms)
+history · alerts · dividends ·
+DCF bases (~6 new syms/run) ·
+look-through (~4 new funds/run)
+preserve prior on any failure" color="#2E75B6" fillcolor="#EAF2FB"]
+	regen [label="Regenerate + validate HTML" color="#2E75B6" fillcolor="#EAF2FB"]
+	pub [label="Write both HTML copies" color="#1F2937" fillcolor="#F3F4F6"]
+	rep [label="Report: sync status · UNIVERSE SOURCE
+(FMP / STOCKHISTORY-tail / carry-fwd) ·
+data-integrity · off-index prices ·
+alerts · dividends · DCF · look-through coverage" color="#2E7D32" fillcolor="#E8F5E9" shape=oval]
+	log [label="Persist run log
+(log_util.py -> logs\: run_*.jsonl +
+latest_run.md + runs.jsonl history)" color="#2E75B6" fillcolor="#EAF2FB"]
+	start -> g0
+	g0 -> abort [label=no color="#C0392B"]
+	g0 -> read [label=yes]
+	read -> keep
+	keep -> g1
+	g1 -> imp [label=yes]
+	g1 -> skip [label=no]
+	imp -> off
+	skip -> off
+	off -> reprice
+	reprice -> g2
+	g2 -> rcore [label=yes]
+	g2 -> keepold [label=no]
+	keepold -> rcore
+	rcore -> guard
+	guard -> hist
+	hist -> deriv
+	deriv -> regen
+	regen -> pub
+	pub -> rep
+	rep -> log
+}

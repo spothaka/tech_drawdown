@@ -1,0 +1,35 @@
+digraph wf_liveprice {
+	bgcolor=white fontname=Helvetica rankdir=TB
+	graph [dpi=150 fontname=Helvetica nodesep=0.35 pad=0.3 ranksep=0.55]
+	node [color="#1F2937" fillcolor=white fontname=Helvetica fontsize=11 margin="0.14,0.08" penwidth=1.2 shape=box style="filled,rounded"]
+	edge [color="#6B7280" fontname=Helvetica fontsize=9.5 penwidth=1.1]
+	fontcolor="#1F2937" fontsize=14 label="Runtime — Load Live Prices Workflow (IRA / Brokerage tab)" labelloc=t
+	t1 [label="Open tab (auto, 1×/day)
+or click ↻ Load live prices" color="#1F2937" fillcolor="#F3F4F6" shape=oval]
+	t2 [label="connector reachable?" color="#E0A106" fillcolor="#FFF7E6" shape=diamond]
+	t2b [label="Use import / universe value
+(hide button)" color="#B07D04" fillcolor="#FFF3CD"]
+	t3 [label="For each marketable holding
+(pool ≈4)" color="#2E75B6" fillcolor="#EAF2FB"]
+	t4 [label="livePrice(ticker)
+LP: cache (DAY TTL)?" color="#E0A106" fillcolor="#FFF7E6" shape=diamond]
+	t5 [label="resolveTyped → find_securities
+(exact :TICKER listing)" color="#C0392B" fillcolor="#FDECEA"]
+	t6 [label="company_tearsheet /
+etf_tearsheet" color="#C0392B" fillcolor="#FDECEA"]
+	t7 [label="parse price · high · MAs →
+LIVEPX[ticker]" color="#2E75B6" fillcolor="#EAF2FB"]
+	t8 [label="Market Value = qty × live price
+recompute G/L · weight · KPIs" color="#2E75B6" fillcolor="#EAF2FB"]
+	t9 [label="Re-render panel + 'as of' stamp" color="#1F2937" fillcolor="#F3F4F6" shape=oval]
+	t1 -> t2
+	t2 -> t2b [label=no color="#C0392B"]
+	t2 -> t3 [label=yes]
+	t3 -> t4
+	t4 -> t8 [label=hit color="#2E7D32"]
+	t4 -> t5 [label=miss]
+	t5 -> t6
+	t6 -> t7
+	t7 -> t8
+	t8 -> t9
+}

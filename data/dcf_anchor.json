@@ -1,0 +1,47 @@
+{
+  "AMZN": {
+    "value": 311.76,
+    "source": "analyst target",
+    "asOf": "2026-07-25"
+  },
+  "MSFT": {
+    "value": 549.08,
+    "source": "analyst target",
+    "asOf": "2026-07-25"
+  },
+  "NVDA": {
+    "value": 319.48,
+    "source": "analyst target",
+    "asOf": "2026-07-25"
+  },
+  "AMD": {
+    "value": 563.88,
+    "source": "analyst target",
+    "asOf": "2026-07-25"
+  },
+  "META": {
+    "value": 820.0,
+    "source": "analyst target",
+    "asOf": "2026-07-25"
+  },
+  "TGT": {
+    "value": 137.05,
+    "source": "analyst target",
+    "asOf": "2026-07-25"
+  },
+  "KO": {
+    "value": 88.0,
+    "source": "analyst target",
+    "asOf": "2026-07-25"
+  },
+  "GOOG": {
+    "value": 419.14,
+    "source": "analyst target",
+    "asOf": "2026-07-18"
+  },
+  "UNH": {
+    "value": 459.12,
+    "source": "analyst target",
+    "asOf": "2026-07-18"
+  }
+}

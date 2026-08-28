@@ -1,0 +1,5 @@
+{
+ "NVDA": {"roe":0.90,"roa":0.55,"gm":0.75,"nm":0.55,"pe":45,"ev":40,"trend":0.18,"upside":0.20,"off":-0.05,"cross":"Golden","held":false},
+ "MSFT": {"roe":0.40,"roa":0.20,"gm":0.70,"nm":0.36,"pe":34,"ev":26,"trend":-0.02,"upside":0.22,"off":-0.12,"cross":"Golden","held":true},
+ "AMD":  {"roe":0.08,"roa":0.05,"gm":0.50,"nm":0.10,"pe":110,"ev":60,"trend":0.05,"upside":-0.05,"off":-0.20,"cross":"Death","held":true}
+}

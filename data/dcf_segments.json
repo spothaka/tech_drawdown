@@ -1,0 +1,17 @@
+{
+  "AMZN": {
+    "source": "bigdata revenue_segmentation (product, FY2025)",
+    "asOf": "2026-07-16",
+    "segErr": 0.0,
+    "segOk": true,
+    "segments": {
+      "Online Stores": 269287000000,
+      "Third-Party Seller Services": 172162000000,
+      "Amazon Web Services": 128725000000,
+      "Advertising Services": 68635000000,
+      "Subscription Services": 49619000000,
+      "Physical Stores": 22561000000,
+      "Other Services": 5935000000
+    }
+  }
+}
