@@ -5,7 +5,7 @@
  *      throws at runtime and blanks every panel. Evaluating the FULL assembled <script> in a stubbed
  *      DOM is the only thing that catches it.
  *   2. a STALE / partial DATA snapshot injected at deploy — drops KPI tiles. The contract tests below
- *      assert the deployed artifact carries the full 19-key DATA and the Retirement KPI tiles that
+ *      assert the deployed artifact carries the full 20-key DATA and the Retirement KPI tiles that
  *      the current book can actually paint (look-through is conditional on a mapped held fund).
  *
  * Run: node --test tests/dash/test_integration.js
@@ -67,10 +67,11 @@ test('deployed artifact is well-formed (closing tags, no placeholder, 2 script t
   assert.ok(!html.includes('__DATA__'), 'DATA placeholder was substituted');
 });
 
-test('embedded DATA carries the full 19-key contract (no stale/partial snapshot)', () => {
+test('embedded DATA carries the full 20-key contract (no stale/partial snapshot)', () => {
   const D = extractDATA(html);
   const required = ['sp', 'nasdaq', 'dow', 'etfs', 'thematic', 'mutualfunds', 'ira', 'brokerage',
-    'coreRank', 'splits', 'indexHistory', 'macroHistory', 'history', 'alerts', 'dividends', 'dcf', 'lookthrough', 'earnings', 'dcfMonitor'];
+    'coreRank', 'splits', 'indexHistory', 'macroHistory', 'history', 'alerts', 'dividends', 'dcf', 'lookthrough', 'earnings', 'dcfMonitor',
+    'corp_actions'];
   for (const k of required) assert.ok(k in D, `DATA.${k} present`);
   assert.ok(D.ira.length && D.brokerage.length && D.coreRank.length, 'core account keys non-empty');
 });

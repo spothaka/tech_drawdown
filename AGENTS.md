@@ -30,7 +30,7 @@ Ranking tests (`tests/ranking/*.js`) use plain `console.assert` / manual fail co
 2. If the ranking engine or rulesets changed: `node scripts/sync_engine.js` (regenerates `src/dash/76_ranking_engine.js`).
 3. If glossary changed: `python scripts/build_glossary.py` (regenerates `src/dash/12_glossary_data.js`).
 4. `python scripts/assemble_dashboard.py --write` — rebuilds `scripts/dashboard_tpl.html` from `src/dash/` MANIFEST.
-5. Inject full 19-key DATA and write **both** `scripts/dashboard.html` **and** `dashboard/tech_drawdown_dashboard.html` byte-identically.
+5. Inject full 20-key DATA and write **both** `scripts/dashboard.html` **and** `dashboard/tech_drawdown_dashboard.html` byte-identically.
 6. Validate: `</html>` terminator, exactly two `</script>`, no `__DATA__` placeholder. Then `bash tests/run_all.sh`.
 
 **There is no republish API.** Writing both HTML copies is the deploy step.
@@ -39,7 +39,7 @@ Ranking tests (`tests/ranking/*.js`) use plain `console.assert` / manual fail co
 - Edit `src/dash/*.js` modules — **never** the assembled `scripts/dashboard_tpl.html` directly.
 - `src/dash/76_ranking_engine.js` is **generated** by `node scripts/sync_engine.js` from `src/ranking/`; edits inside it will be overwritten.
 - `src/dash/12_glossary_data.js` is **generated** by `python scripts/build_glossary.py` from `data/glossary/`; same warning.
-- `DATA` must carry exactly **19 keys**: `sp`, `nasdaq`, `dow`, `etfs`, `thematic`, `mutualfunds`, `ira`, `brokerage`, `coreRank`, `splits`, `indexHistory`, `macroHistory`, `history`, `alerts`, `dividends`, `dcf`, `lookthrough`, `earnings`, `dcfMonitor`. The integration test enforces this.
+- `DATA` must carry exactly **20 keys**: `sp`, `nasdaq`, `dow`, `etfs`, `thematic`, `mutualfunds`, `ira`, `brokerage`, `coreRank`, `splits`, `indexHistory`, `macroHistory`, `history`, `alerts`, `dividends`, `dcf`, `lookthrough`, `earnings`, `dcfMonitor`, `corp_actions`. The integration test enforces this.
 - MANIFEST order in `assemble_dashboard.py` is the JS load order — helpers must be declared before the load-time IIFEs that call them. `12_glossary_data.js` must precede `10_helpers.js`. `49_montecarlo.js` and `52_lookthrough.js` must precede `60_portfolio.js`.
 - Use `function` declarations (hoisted) for anything called during panel build — `const`/`let` arrow functions will not be visible to earlier load-time IIFEs.
 - The deployed file is one inline `<script>` block with no ES modules (`import`/`export`). All shared state is `var`/`function` on `globalThis`.

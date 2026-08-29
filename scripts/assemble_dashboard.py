@@ -24,6 +24,7 @@ MANIFEST = [
     '30_overview.js',      # Overview spectrum boards + KPIs (load-time IIFE)
     '40_charts.js',        # buildIndexChart + buildMacro (load-time IIFEs)
     '45_benchmark.js',     # buildBenchmark — portfolio vs Dow/Nasdaq/S&P (called by buildRetirePanel; define BEFORE 60_portfolio)
+    '46_corp_actions.js',  # corpActionsSection(ticker) — Corporate Actions card in the Fundamentals popup (define BEFORE 74_fundamentals)
     '46_drawdown.js',      # buildDrawdown — underwater drawdown timeline (called by buildRetirePanel; define BEFORE 60_portfolio)
     '49_montecarlo.js',    # MC engine + openMonteCarlo popup; mcMedian() feeds the KPI tile (define BEFORE 60_portfolio)
     '52_lookthrough.js',   # fund look-through roll-up + openLookthrough popup; ltTopHidden() feeds the KPI tile (BEFORE 60_portfolio)

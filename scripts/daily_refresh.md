@@ -30,7 +30,7 @@ Scratch goes in `scripts/tmp/` (gitignored). Never blank a prior good value. Pre
 
 8. **Integrity guard** on the final DATA (`integrity_guard.py`). Carry `data/splits.json` badges.
 
-9. **Assemble and inject.** `python scripts/assemble_dashboard.py --write`. Golden-master must MATCH. Inject the **full** 19-key DATA (start from the freshest deployed `const DATA`, fold in changed keys). Write **both** `scripts/dashboard.html` and `dashboard/tech_drawdown_dashboard.html` byte-identically. Validate: `</html>` terminator, two `</script>`, node parse. There is no republish API.
+9. **Assemble and inject.** `python scripts/assemble_dashboard.py --write`. Golden-master must MATCH. Inject the **full** 20-key DATA (start from the freshest deployed `const DATA`, fold in changed keys; ensure `corp_actions` is populated from `data/corp_actions.json` — add it if absent). Write **both** `scripts/dashboard.html` and `dashboard/tech_drawdown_dashboard.html` byte-identically. Validate: `</html>` terminator, two `</script>`, node parse. There is no republish API.
 
 10. **Report.** Use `python scripts/log_util.py` (`start` / `event` / `finalize`). Include UNIVERSE SOURCE (FMP / STOCKHISTORY-tail / carry-forward), import skips, alerts, DCF/look-through coverage, and any preserve-on-failure skips.
 

@@ -49,8 +49,8 @@ Effort: **S** ≈ hours, **M** ≈ a day, **L** ≈ multi-day.
 - [ ] **Export to PDF / email digest** — **M** _(email needs a connector)_
   Portfolio summary, alerts, top rankings — on demand or after the 9am run. PDF-to-folder is deliverable without mail; emailing private holdings is a privacy decision.
 
-- [ ] **Corporate Actions summary in the Fundamentals popup** — **M**
-  Splits (already in `DATA.splits`), dividends, M&A where the tearsheet covers them. Spin-offs / ticker changes / delistings need a feed or a manual `data/corp_actions.json`.
+- [x] **Corporate Actions summary in the Fundamentals popup** — **M** _(shipped 2026-08-28)_
+  Splits (`DATA.splits`), upcoming dividends (`DATA.dividends.upcoming`), and manually-maintained M&A / spin-off / delisting notes (`DATA.corp_actions`, 20th DATA key). New module `src/dash/46_corp_actions.js`; wired into all 4 `openTicker` paths; 11 unit tests; 21 seeded corp-actions entries.
 
 - [ ] **Security hardening — authentication & access control**
   Before any live brokerage link. Single-owner local file today; holdings stay on disk.

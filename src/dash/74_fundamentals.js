@@ -190,6 +190,7 @@ function cachedTearsheetHtml(ticker,isETF){
     var html=factsheetETF(BDX.etfFacts(md),ticker,anyRowByTicker(ticker));
     if(typeof etfSignal==='function') html+=etfSignal(md);
     if(typeof mdToHtml==='function') html+=mdToHtml(md);
+    if(typeof corpActionsSection==='function') html+=corpActionsSection(ticker);
     return html+'<div class="foot" style="margin-top:8px">Cached tearsheet from a prior live session.</div>';
   }
   var ct=pcGet('CT:'+ticker,DAY);
@@ -204,6 +205,7 @@ function cachedTearsheetHtml(ticker,isETF){
     if(typeof riskSection==='function') html+=riskSection(risk);
     if(typeof renderCompany==='function') html+=renderCompany(t2);
   }
+  if(typeof corpActionsSection==='function') html+=corpActionsSection(ticker);
   return html+'<div class="foot" style="margin-top:8px">Cached tearsheet from a prior live session.</div>';
 }
 async function openTicker(ticker,isETF){
@@ -219,7 +221,8 @@ async function openTicker(ticker,isETF){
       +'<div class="note">Live tearsheet isn\'t reachable in this browser — showing the embedded snapshot'
       +(cached?' plus a cached tearsheet from a prior live session.':'.')
       +'</div>'
-      +(cached||snapshotCard(ticker,isETF));
+      +(cached||snapshotCard(ticker,isETF))
+      +((typeof corpActionsSection==='function')?corpActionsSection(ticker):'');
     if(!isETF&&typeof dcfFill==='function') await dcfFill(ticker);
     return;
   }
@@ -232,7 +235,7 @@ async function openTicker(ticker,isETF){
       if(md===undefined){ const m=await resolveEntity(ticker,true); if(!m){mBody.innerHTML='<div class="note">No security match found for '+esc(ticker)+'.</div>';return;} name=m.name; md=await BDX.etfMarkdown(m.id,true); pcSet('ETF:'+ticker,md); }
       else{ const e=pcGet('EID:'+ticker,30*DAY); name=(e&&e.name)||''; }
       mTitle.textContent=ticker+(name?(' · '+name):'');
-      var _ef=BDX.etfFacts(md); html=factsheetETF(_ef,ticker,rowByTicker(ticker))+etfSignal(md)+mdToHtml(md)+cacheNote(ticker,true);
+      var _ef=BDX.etfFacts(md); html=factsheetETF(_ef,ticker,rowByTicker(ticker))+etfSignal(md)+mdToHtml(md)+((typeof corpActionsSection==='function')?corpActionsSection(ticker):'')+cacheNote(ticker,true);
     } else {
       let ct=pcGet('CT:'+ticker,DAY), sg=pcGet('SENT:'+ticker,DAY), m=null;
       if(ct===undefined){ m=await resolveEntity(ticker,false); if(!m){mBody.innerHTML='<div class="note">No security match found for '+esc(ticker)+'.</div>';return;} const t=await BDX.companyTearsheet(m.id,['company_overview','financial_ratios','key_metrics','analyst_ratings','dividends','esg_performance']); ct=compactCT(t); pcSet('CT:'+ticker,ct); }
@@ -242,7 +245,7 @@ async function openTicker(ticker,isETF){
       const t2=expandCT(ct);
       const risk=computeRisk(t2,rowByTicker(ticker),sg,ct.esg);
       const _r=rowByTicker(ticker); if(_r)_r.risk=risk.overall; const _spt=document.getElementById('spTable'); if(_spt&&_spt._render)_spt._render();
-      html='<div id="dcfStrip"></div>'+factsheetCompany(ct.p,rowByTicker(ticker))+advisorScorecard(ct.k,rowByTicker(ticker),risk,sg,ct.ad)+riskSection(risk)+renderCompany(t2)+cacheNote(ticker,false);
+      html='<div id="dcfStrip"></div>'+factsheetCompany(ct.p,rowByTicker(ticker))+advisorScorecard(ct.k,rowByTicker(ticker),risk,sg,ct.ad)+riskSection(risk)+renderCompany(t2)+((typeof corpActionsSection==='function')?corpActionsSection(ticker):'')+cacheNote(ticker,false);
     }
     fundCache[ck]=html;mBody.innerHTML=html;
     if(!isETF&&typeof dcfFill==='function') await dcfFill(ticker);

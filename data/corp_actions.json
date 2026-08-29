@@ -1,0 +1,164 @@
+{
+  "MSFT": [
+    {
+      "type": "acquisition",
+      "date": "2023-10-13",
+      "note": "Acquired Activision Blizzard for ~$68.7 billion — largest gaming deal in history. Adds Call of Duty, World of Warcraft, Candy Crush, and King to Microsoft Gaming."
+    }
+  ],
+  "ATVI": [
+    {
+      "type": "acquisition",
+      "date": "2023-10-13",
+      "note": "Acquired by Microsoft (MSFT) for ~$68.7 billion. ATVI delisted from Nasdaq; gaming titles (Call of Duty, Candy Crush, World of Warcraft) now under Microsoft Gaming."
+    }
+  ],
+  "AVGO": [
+    {
+      "type": "acquisition",
+      "date": "2023-11-22",
+      "note": "Completed $69 billion acquisition of VMware. Rebranded enterprise software as 'VMware by Broadcom'; pivoted VMware to subscription model."
+    },
+    {
+      "type": "split",
+      "date": "2024-07-15",
+      "note": "10:1 forward stock split effective July 15, 2024."
+    }
+  ],
+  "VMW": [
+    {
+      "type": "acquisition",
+      "date": "2023-11-22",
+      "note": "Acquired by Broadcom (AVGO) for ~$69 billion. VMware delisted from NYSE; cloud and subscription businesses absorbed into Broadcom's infrastructure software segment."
+    }
+  ],
+  "NVDA": [
+    {
+      "type": "split",
+      "date": "2024-06-10",
+      "note": "10:1 forward stock split effective June 10, 2024."
+    }
+  ],
+  "AMZN": [
+    {
+      "type": "split",
+      "date": "2022-06-06",
+      "note": "20:1 forward stock split effective June 6, 2022."
+    }
+  ],
+  "TSLA": [
+    {
+      "type": "split",
+      "date": "2022-08-25",
+      "note": "3:1 forward stock split effective August 25, 2022."
+    }
+  ],
+  "GOOGL": [
+    {
+      "type": "split",
+      "date": "2022-07-18",
+      "note": "20:1 forward stock split effective July 18, 2022."
+    }
+  ],
+  "GOOG": [
+    {
+      "type": "split",
+      "date": "2022-07-18",
+      "note": "20:1 forward stock split effective July 18, 2022."
+    }
+  ],
+  "SHOP": [
+    {
+      "type": "split",
+      "date": "2022-06-29",
+      "note": "10:1 forward stock split effective June 29, 2022."
+    },
+    {
+      "type": "spinoff",
+      "date": "2023-05-02",
+      "note": "Spun off Shopify Logistics (Deliverr + 6 River Systems) to Flexport for equity consideration, exiting warehousing and fulfillment operations to refocus on core commerce software."
+    }
+  ],
+  "GE": [
+    {
+      "type": "spinoff",
+      "date": "2023-01-04",
+      "note": "Spun off GE HealthCare (GEHC) as an independent Nasdaq-listed company on January 4, 2023."
+    },
+    {
+      "type": "spinoff",
+      "date": "2024-04-02",
+      "note": "Spun off GE Vernova (power & energy segment) as GEV on NYSE on April 2, 2024. GE retained as GE Aerospace — focused solely on jet engines and defense systems."
+    }
+  ],
+  "GEHC": [
+    {
+      "type": "spinoff",
+      "date": "2023-01-04",
+      "note": "GE HealthCare spun off from General Electric (GE) and began independent trading on Nasdaq as GEHC on January 4, 2023."
+    }
+  ],
+  "GEV": [
+    {
+      "type": "spinoff",
+      "date": "2024-04-02",
+      "note": "GE Vernova (power & energy segment) spun off from GE Aerospace and began trading on NYSE as GEV on April 2, 2024."
+    }
+  ],
+  "DIS": [
+    {
+      "type": "acquisition",
+      "date": "2024-12-01",
+      "note": "Completed full acquisition of Hulu by purchasing Comcast's remaining ~33% stake for $8.6 billion, giving Disney 100% ownership of the streaming platform."
+    }
+  ],
+  "HPE": [
+    {
+      "type": "acquisition",
+      "date": "2025-02-18",
+      "note": "Acquired Juniper Networks (JNPR) for ~$14 billion ($40/share cash). Deal closed February 2025 after extended DoJ antitrust review; adds AI-driven networking to HPE's hybrid-cloud portfolio."
+    }
+  ],
+  "JNPR": [
+    {
+      "type": "acquisition",
+      "date": "2025-02-18",
+      "note": "Acquired by Hewlett Packard Enterprise (HPE) for ~$14 billion ($40/share cash). JNPR delisted from NYSE upon close in February 2025."
+    }
+  ],
+  "WBA": [
+    {
+      "type": "delisting",
+      "date": "2025-03-11",
+      "note": "Walgreens Boots Alliance delisted from Nasdaq after agreeing to be taken private by Sycamore Partners for ~$10 billion. Previously removed from the Dow Jones Industrial Average in February 2024."
+    }
+  ],
+  "UNH": [
+    {
+      "type": "other",
+      "date": "2025-05-13",
+      "note": "CEO Andrew Witty resigned; guidance suspended amid elevated medical costs and a DoJ criminal fraud investigation into Medicare billing practices. Stock fell >50% from its peak. Brian Thompson, CEO of UnitedHealthcare, was fatally shot in December 2024."
+    }
+  ],
+  "CI": [
+    {
+      "type": "acquisition",
+      "date": "2024-12-05",
+      "note": "Cigna agreed to sell its Medicare Advantage business to Health Care Service Corporation (HCSC) for ~$3.7 billion, refocusing on commercial insurance and pharmacy benefits (Express Scripts)."
+    }
+  ],
+  "BKNG": [
+    {
+      "type": "split",
+      "date": "2026-04-06",
+      "note": "25:1 forward stock split effective April 6, 2026."
+    }
+  ],
+  "CVNA": [
+    {
+      "type": "split",
+      "date": "2026-05-07",
+      "note": "5:1 forward stock split effective May 7, 2026."
+    }
+  ]
+}

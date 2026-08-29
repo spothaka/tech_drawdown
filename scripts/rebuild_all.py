@@ -77,6 +77,11 @@ try:
     with open(os.path.join(DATA_DIR,'splits.json')) as _sf: d['splits']=json.load(_sf) or {}
 except Exception:
     d['splits']=d.get('splits',{}) or {}
+# corporate actions (data/corp_actions.json) -> DATA.corp_actions for the Fundamentals popup
+try:
+    with open(os.path.join(DATA_DIR,'corp_actions.json')) as _caf: d['corp_actions']=json.load(_caf) or {}
+except Exception:
+    d['corp_actions']=d.get('corp_actions',{}) or {}
 # portfolio value history (data/history.json) -> DATA.history for the benchmark card
 try:
     with open(os.path.join(DATA_DIR,'history.json')) as _hf: d['history']=json.load(_hf) or []
@@ -133,11 +138,11 @@ print("data keys:",list(d.keys()),"| ira",len(d.get('ira',[])),"brokerage",len(d
 import build_glossary as _gl; _gl.main()  # regenerate src/dash/12_glossary_data.js from data/glossary/*.json
 import assemble_dashboard as _asm; _asm.write()
 # regenerate deployed
-tpl=open(TPL).read(); data=open(DJ).read()
+tpl=open(TPL,encoding='utf-8').read(); data=open(DJ,encoding='utf-8').read()
 out=tpl.replace('const DATA = __DATA__;','const DATA = '+data+';')
 assert '__DATA__' not in out and out.rstrip().endswith('</html>') and out.count('</script>')==2
-open(os.path.join(SCRIPTS_DIR,'dashboard.html'),'w').write(out)
-open(os.path.join(DASH_DIR,'tech_drawdown_dashboard.html'),'w').write(out)
+open(os.path.join(SCRIPTS_DIR,'dashboard.html'),'w',encoding='utf-8').write(out)
+open(os.path.join(DASH_DIR,'tech_drawdown_dashboard.html'),'w',encoding='utf-8').write(out)
 print("deployed bytes",len(out))
 # DELL check
 for k in ('sp','dow'):
